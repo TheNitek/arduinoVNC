@@ -29,9 +29,10 @@
 #ifndef VNC_ST7789_H_
 #define VNC_ST7789_H_
 
+#include "VNC_config.h"
+
 #ifdef VNC_ST7789
 
-#include "VNC_config.h"
 #include "VNC_BB_SPI.h"
 #include "pins_arduino.h"
 
