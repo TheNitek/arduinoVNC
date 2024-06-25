@@ -34,6 +34,4 @@ ILI9341VNC::ILI9341VNC(int8_t cs, int8_t dc, int8_t rst, int8_t led, int8_t miso
     this->begin(LCD_ILI9341, FLAGS_NONE, 40000000, cs, dc, rst, led, miso, mosi, sck);
 }
 
-int ILI9341VNC::begin() { return 0; }
-
 #endif

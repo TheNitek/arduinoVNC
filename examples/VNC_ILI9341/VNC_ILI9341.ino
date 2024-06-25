@@ -73,8 +73,6 @@ void setup(void) {
     Serial.println();
 
     // Init ILI9341
-    tft.begin();
-    delay(10);
     tft.setRotation(1);
 
     tft.fillScreen(TFT_BLUE);

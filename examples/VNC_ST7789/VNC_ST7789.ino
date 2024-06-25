@@ -32,7 +32,6 @@ ST7789VNC tft = ST7789VNC(15, 5);
 arduinoVNC vnc = arduinoVNC(&tft);
 
 void setup(void) {
-    tft.begin();
     Serial.begin(115200);
 
     tft.setRotation(0);

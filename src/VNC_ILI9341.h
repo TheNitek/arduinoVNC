@@ -38,8 +38,6 @@
 class ILI9341VNC: public BB_SPI_VNC {
     public:
         ILI9341VNC(int8_t cs, int8_t dc, int8_t rst = -1, int8_t led = -1, int8_t miso = MISO, int8_t mosi = MOSI, int8_t sck = SCK);
-        using BB_SPI_VNC::begin;
-        int begin();
 };
 
 #endif

@@ -36,6 +36,4 @@ ST7789VNC::ST7789VNC(int8_t cs, int8_t dc, int8_t rst, int8_t led, int8_t miso, 
     this->begin(LCD_ST7789, FLAGS_INVERT, 40000000, cs, dc, rst, led, miso, mosi, sck);
 }
 
-int ST7789VNC::begin() { return 0; }
-
 #endif
