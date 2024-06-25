@@ -1,10 +1,11 @@
 #ifndef VNC_BB_SPI_H_
 #define VNC_BB_SPI_H_
 
+#include "VNC_config.h"
+
 #ifdef VNC_BB_SPI
 
 #include <bb_spi_lcd.h>
-#include "VNC_config.h"
 #include "VNC.h"
 
 class BB_SPI_VNC : public VNCdisplay, public BB_SPI_LCD {
