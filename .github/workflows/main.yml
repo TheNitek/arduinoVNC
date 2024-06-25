@@ -33,7 +33,7 @@ jobs:
               name: "esp8266:esp8266"
           libraries: |
             - source-path: ./
-            - bb_spi_lcd
+            - name: bb_spi_lcd
             - source-url: https://github.com/lovyan03/LovyanGFX.git
   done:
     needs: build
