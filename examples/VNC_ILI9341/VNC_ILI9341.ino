@@ -6,8 +6,7 @@
  * required librarys:
  *  - SPI (arduino core)
  *  - WiFi (arduino core)
- *  - Adafruit_GFX (https://github.com/adafruit/Adafruit-GFX-Library)
- *  - Adafruit_ILI9341 (https://github.com/Links2004/Adafruit_ILI9341)
+ *  - BB_LCD_SPI (https://github.com/bitbank2/bb_spi_lcd)
  *  - arduinoVNC (https://github.com/Links2004/arduinoVNC)
  */
 
@@ -18,9 +17,6 @@
 #include <WiFi.h>
 #endif
 #include <SPI.h>
-
-#include <Adafruit_GFX.h>
-#include <Adafruit_ILI9341.h>
 
 #include <VNC_ILI9341.h>
 #include <VNC.h>
@@ -45,9 +41,9 @@ ILI9341VNC tft = ILI9341VNC(TFT_CS, TFT_DC, TFT_RESET);
 arduinoVNC vnc = arduinoVNC(&tft);
 
 void TFTnoWifi(void) {
-    tft.fillScreen(ILI9341_BLACK);
+    tft.fillScreen(TFT_BLACK);
     tft.setCursor(0, ((tft.getHeight() / 2) - (5 * 8)));
-    tft.setTextColor(ILI9341_RED);
+    tft.setTextColor(TFT_RED);
     tft.setTextSize(5);
     tft.println("NO WIFI!");
     tft.setTextSize(2);
@@ -56,9 +52,9 @@ void TFTnoWifi(void) {
 
 
 void TFTnoVNC(void) {
-    tft.fillScreen(ILI9341_BLACK);
+    tft.fillScreen(TFT_BLACK);
     tft.setCursor(0, ((tft.getHeight() / 2) - (4 * 8)));
-    tft.setTextColor(ILI9341_GREEN);
+    tft.setTextColor(TFT_GREEN);
     tft.setTextSize(4);
     tft.println("connect VNC");
     tft.setTextSize(2);
@@ -81,7 +77,7 @@ void setup(void) {
     delay(10);
     tft.setRotation(1);
 
-    tft.fillScreen(ILI9341_BLUE);
+    tft.fillScreen(TFT_BLUE);
 #ifdef ESP8266
     // disable sleep mode for better data rate
     WiFi.setSleepMode(WIFI_NONE_SLEEP);

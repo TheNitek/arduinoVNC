@@ -29,34 +29,19 @@
 #ifndef VNC_ST7789_H_
 #define VNC_ST7789_H_
 
+#ifdef VNC_ST7789
+
 #include "VNC_config.h"
-#include <TFT_eSPI.h>
-#include "VNC_ST7789.h"
-#include "VNC.h"
+#include "VNC_BB_SPI.h"
+#include "pins_arduino.h"
 
-class ST7789VNC : public VNCdisplay, public TFT_eSPI {
-  public:
-    ST7789VNC();
-
-    bool hasCopyRect(void);
-
-    uint32_t getHeight(void);
-    uint32_t getWidth(void);
-
-    void draw_area(uint32_t x, uint32_t y, uint32_t w, uint32_t h, uint8_t * data);
-
-    void draw_rect(uint32_t x, uint32_t y, uint32_t w, uint32_t h, uint16_t color);
-
-    void copy_rect(uint32_t src_x, uint32_t src_y, uint32_t dest_x, uint32_t dest_y, uint32_t w, uint32_t h);
-
-    void area_update_start(uint32_t x, uint32_t y, uint32_t w, uint32_t h);
-    void area_update_data(char * data, uint32_t pixel);
-    void area_update_end(void);
-
-    void vnc_options_override(dfb_vnc_options * opt);
-
-  private:
-    uint32_t area_x, area_y, area_w, area_h;
+class ST7789VNC : public BB_SPI_VNC {
+    public:
+        ST7789VNC(int8_t cs, int8_t dc, int8_t rst = -1, int8_t led = -1, int8_t miso = MISO, int8_t mosi = MOSI, int8_t sck = SCK);
+        using BB_SPI_VNC::begin;
+        int begin();
 };
+
+#endif
 
 #endif

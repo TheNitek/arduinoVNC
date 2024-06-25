@@ -30,6 +30,7 @@
 #ifndef VNC_USER_SETUP_LOADED
 
 /// Display
+#define VNC_BB_SPI
 #define VNC_ILI9341
 #define VNC_ST7789
 

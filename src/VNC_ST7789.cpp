@@ -30,53 +30,12 @@
 
 #ifdef VNC_ST7789
 
-#include "VNC.h"
-
-#include <SPI.h>
-#include <TFT_eSPI.h>
-
 #include "VNC_ST7789.h"
 
-ST7789VNC::ST7789VNC() {
-    TFT_eSPI();
+ST7789VNC::ST7789VNC(int8_t cs, int8_t dc, int8_t rst, int8_t led, int8_t miso, int8_t mosi, int8_t sck) {
+    this->begin(LCD_ST7789, FLAGS_INVERT, 40000000, cs, dc, rst, led, miso, mosi, sck);
 }
 
-bool ST7789VNC::hasCopyRect(void) {
-    return false;
-}
+int ST7789VNC::begin() { return 0; }
 
-uint32_t ST7789VNC::getHeight(void) {
-    return 240;
-}
-
-uint32_t ST7789VNC::getWidth(void) {
-    return 240;
-}
-
-void ST7789VNC::draw_area(uint32_t x, uint32_t y, uint32_t w, uint32_t h, uint8_t * data) {
-    TFT_eSPI::pushImage(x, y, w, h, (uint16_t *)data);
-}
-
-void ST7789VNC::draw_rect(uint32_t x, uint32_t y, uint32_t w, uint32_t h, uint16_t color) {
-    TFT_eSPI::fillRect(x, y, w, h, ((((color)&0xff) << 8) | (((color) >> 8))));
-}
-
-void ST7789VNC::copy_rect(uint32_t src_x, uint32_t src_y, uint32_t dest_x, uint32_t dest_y, uint32_t w, uint32_t h) {
-}
-
-void ST7789VNC::area_update_start(uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
-    TFT_eSPI::setAddrWindow(x, y, w, h);
-}
-
-void ST7789VNC::area_update_data(char * data, uint32_t pixel) {
-    TFT_eSPI::pushPixels((uint8_t *)data, pixel);
-}
-
-void ST7789VNC::area_update_end(void) {
-}
-
-void ST7789VNC::vnc_options_override(dfb_vnc_options * opt) {
-    // TODO: may need to be swaped for ESP8266
-    opt->client.bigendian = 1;
-}
 #endif

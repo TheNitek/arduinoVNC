@@ -7,7 +7,7 @@
  *  - SPI (arduino core)
  *  - WiFi (arduino core)
  *  - arduinoVNC (https://github.com/Links2004/arduinoVNC)
- *  - TFT_eSPI (https://github.com/Bodmer/TFT_eSPI)
+ *  - BB_LCD_SPI (https://github.com/bitbank2/bb_spi_lcd)
  */
 
 #include <Arduino.h>
@@ -18,7 +18,6 @@
 #endif
 #include <SPI.h>
 
-#include <TFT_eSPI.h>
 #include <VNC_ST7789.h>
 #include <VNC.h>
 
@@ -29,7 +28,7 @@ const char * vnc_pass = "12345678";
 const char* ssid = "your-ssid";
 const char* password = "your-password";
 
-ST7789VNC tft = ST7789VNC();
+ST7789VNC tft = ST7789VNC(15, 5);
 arduinoVNC vnc = arduinoVNC(&tft);
 
 void setup(void) {
@@ -38,7 +37,7 @@ void setup(void) {
 
     tft.setRotation(0);
     tft.setTextSize(2);
-    tft.setCursor(0, 0, 1);
+    tft.setCursor(0, 0);
     tft.println("Ready");
 
     Serial.setDebugOutput(true);
